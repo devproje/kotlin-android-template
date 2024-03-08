@@ -52,11 +52,3 @@ fun FilledButton(onClick: () -> Unit) {
         Text("test")
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DefaultTheme {
-        Greeting("Android")
-    }
-}
