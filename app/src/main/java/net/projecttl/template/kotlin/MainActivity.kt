@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.dp
 import net.projecttl.template.kotlin.ui.theme.DefaultTheme
 
 class MainActivity : ComponentActivity() {
+    private var count = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -26,10 +28,17 @@ class MainActivity : ComponentActivity() {
                 Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
                     Greeting("Android")
                     FilledButton {
-                        val toast = Toast.makeText(this@MainActivity, "Hello!", Toast.LENGTH_SHORT)
-                        toast.show()
+                        if (count > 9) {
+                            val toast = Toast.makeText(this@MainActivity, "Hello!", Toast.LENGTH_SHORT)
+                            toast.show()
 
-                        Log.d("Clicked Button", "successfully execute function.")
+                            count = 0
+                            Log.d("Clicked Button", "EASTER EGGS!")
+                            return@FilledButton
+                        }
+
+                        count++
+                        Log.d("Clicked Button", "successfully execute function. try: $count")
                     }
                 }
             }
@@ -49,6 +58,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun FilledButton(onClick: () -> Unit) {
     Button(onClick = { onClick() }, modifier = Modifier.size(80.dp, 35.dp)) {
-        Text("test")
+        Text("Click Me!")
     }
 }
