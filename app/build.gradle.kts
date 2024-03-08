@@ -4,6 +4,7 @@ plugins {
 }
 
 val exposed_version = property("exposed_version")
+val sqlite_driver_version = property("sqlite_driver_version")
 
 android {
     namespace = "net.projecttl.template.kotlin"
@@ -70,5 +71,5 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
 
-    implementation("org.xerial:sqlite-jdbc:3.45.1.0")
+    implementation("org.xerial:sqlite-jdbc:$sqlite_driver_version")
 }
